@@ -7,6 +7,7 @@ use App\Models\Data;
 use Illuminate\Http\Request;
 use App\Trait\Reward;
 use App\Models\Profit;
+use App\Models\racharch\Rchagesuser;
 use App\Models\WithdrawOrDepositMoney;
 class AutoController extends Controller
 {
@@ -29,11 +30,13 @@ class AutoController extends Controller
      */
     public function create()
     {
-        $wait=WithdrawOrDepositMoney::with('user')->whereIn('status_mony',['0','2'])->get();
+        $datarechachWait=Rchagesuser::with('user', 'package.compantincom.Company', 'packagePrice.compantincom.Company')->whereIn('status', ['غير جاهزه', 'قيد الانتظار'])->get();
+        // return  $datarechachWait;
+       $wait=WithdrawOrDepositMoney::with('user')->whereIn('status_mony',['0', '1'])->get();
         // return $wait;
-        $data['wait']=$wait;
+        // $data['wait']=$wait;
         // return $data["wait"];
-       return  view('admin.users.data',compact('wait'));
+       return  view('admin.users.data',compact('wait','datarechachWait'));
     }
 
     /**

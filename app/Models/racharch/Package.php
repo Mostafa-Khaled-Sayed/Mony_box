@@ -9,4 +9,8 @@ class Package extends Model
 {
     use HasFactory;
     protected $fillable=['photo','identifiedcharge','company_incountrie_id','status','price','valite','samplercharge','description','type','name'];
+    public function compantincom()
+    {
+        return $this->belongsTo(companyIncountry::class, 'company_incountrie_id');
+    }
 }

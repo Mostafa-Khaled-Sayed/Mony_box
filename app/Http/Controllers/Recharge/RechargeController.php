@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Recharge;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\racharch\RechargeCountry;
 use App\Models\racharch\companyIncountry;
 use App\Models\racharch\PackagePrice;
 use App\Models\racharch\Package;
+use App\Models\racharch\Rchagesuser;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -27,7 +29,7 @@ class RechargeController extends Controller
      */
     public function create($id)
     {
-        
+
     }
     public function createPackage($id)
     {
@@ -37,17 +39,16 @@ class RechargeController extends Controller
     public function createPrice($id)
     {
         $companydata=RechargeCountry::with('companyIncountry')->findOrFail($id);
-       
+
         return view('admin.recharge.dashboard-addPrice',compact('companydata'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-      public function DeleteAttachment($disk,$path,$id,$fileName){
+      public function DeleteAttachment($disk,$path){
 Storage::disk($disk)->delete($path);
-Image::Where('imagable_id',$id)->delete();
-          
+return 1;
       }
          public function veryfiedandStoreImage( $request,$inputname,$foldername,$disk){
 if($request->hasFile($inputname)){
@@ -62,11 +63,10 @@ $fileName=$name.'.'.$photo->getClientOriginalExtension();
              $request->file($inputname)->storeAs($foldername,$fileName,$disk);
              return $fileName;
          }
-     
+
     public function store(Request $request)
     {
           $validated = $request->validate([
-
         'countryImage' => 'required|mimes:jpeg,png,jpg,gif,svg',
         'countryBackground' => 'required|mimes:jpeg,png,jpg,gif,svg',
         'status' => 'required',
@@ -75,7 +75,7 @@ $fileName=$name.'.'.$photo->getClientOriginalExtension();
 
        $countryImage= $this->veryfiedandStoreImage($request,'countryImage','BackgroundImage','imageCountry',);
        $countryBackground= $this->veryfiedandStoreImage($request,'countryBackground','BackgroundCountry','backgroundcountry',);
-        
+
       $RechargeCountry=  RechargeCountry::create([
             'status'=>$request->status,
             'country_background'=>$countryBackground,
@@ -95,6 +95,40 @@ $fileName=$name.'.'.$photo->getClientOriginalExtension();
     /**
      * Display the specified resource.
      */
+    public function rchargeUser(Request $request){
+        $validated = $request->validate([
+            'phone' => 'required',
+            'type' => 'required',
+            'packagePriceId' => 'required',
+        ]);
+        $motification=Notification::create([
+            'user_id' => auth()->user()->id,
+            'message'=>auth()->user()->name."المستخدم يريد شحن رصيد او باقه",
+            'status'=>'غير جاهزه',
+            'type'=> 'another',
+        ]);
+    //   return($request);
+        if($request->type=='1'){
+            Rchagesuser::create([
+                'type' => 1,
+                'user_id' => auth()->user()->id,
+                'notification_id' => $motification->id,
+                'package_price_id'=>$request->packagePriceId,
+                "phone" => $request->phone,
+            ]);
+        }else{
+            Rchagesuser::create([
+                'type' => 0,
+                'user_id' => auth()->user()->id,
+                'notification_id' => $motification->id,
+                'package_id' => $request->packagePriceId,
+                "phone" => $request->phone,
+            ]);
+        }
+
+return redirect()->back();
+
+    }
     public function show(string $id)
     {
         //
@@ -121,7 +155,7 @@ $fileName=$name.'.'.$photo->getClientOriginalExtension();
             'status'=>$request->status,
             'country_name'=>$request->name,
             ]);
-        
+
                    if(isset($request->items))
             foreach($request->items as $value)
             companyIncountry::create([
@@ -147,15 +181,15 @@ $fileName=$name.'.'.$photo->getClientOriginalExtension();
      */
     public function destroy($id)
     {
-       
+
      if(!companyIncountry::where('recharge_countrie_id',$id)->exists())
        { RechargeCountry::destroy($id);
            toastr()->error('deleted');
-           
+
        }else
            toastr()->error('  you can not deleted');
           return redirect()->back();
-        
+
     }
     public function destroycompany($id)
     {
@@ -163,12 +197,12 @@ $fileName=$name.'.'.$photo->getClientOriginalExtension();
      if(Package::where('company_incountrie_id',$id)->exists() | PackagePrice::where('company_incountrie_id',$id)->exists() )
            toastr()->error('  you can not deleted');
             else{
-              
+
        companyIncountry::findOrFail($id)->delete();
            toastr()->error('deleted');
-                
+
             }
           return redirect()->back();
-        
+
     }
 }

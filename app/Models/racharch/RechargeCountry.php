@@ -9,7 +9,7 @@ class RechargeCountry extends Model
 {
     use HasFactory;
 protected $table= "recharge_countries";
-    protected $fillable=['status','country_background','country_image','country_name'];
+    protected $fillable=['status', 'currency','country_background','country_image','country_name'];
     public function companyIncountry(){
         return $this->hasMany(companyIncountry::class,'recharge_countrie_id');
     }

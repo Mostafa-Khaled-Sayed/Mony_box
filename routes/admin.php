@@ -75,7 +75,7 @@ Route::group(
 
         // //start data
         Route::get('/data', [DataController::class, 'index']);
-        Route::get('/data-admin', [AutoController::class, 'create']);
+        Route::get('/data-admin', [AutoController::class, 'create'])->name('data-admin');
 
         Route::post('/dashboard/data/store', [DataController::class, 'store']);
         Route::post('/dashboard/data/delete', [DataController::class, 'delete']);

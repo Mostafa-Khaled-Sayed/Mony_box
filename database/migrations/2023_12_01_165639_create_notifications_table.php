@@ -16,7 +16,7 @@ return new class extends Migration
              $table->foreignId('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
             $table->foreignId('admin_id')->nullable()->references('id')->on('admins')->cascadeOnDelete();
             $table->boolean('read')->default(0);
-            $table->enum('type', ['register', 'send', 'withdrow', 'convert','another' , 'updatUser'])->default('another');
+            $table->enum('type', ['register', 'send', 'withdrow', 'convert', 'another' , 'updatUser'])->default('another');
             $table->enum('status', ['جاهزه','غير جاهزه', 'قيد الانتظار' ]);
             $table->text('message')->default('..');
             $table->timestamps();

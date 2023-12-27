@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('withdraw_money')->nullable();
             $table->double('deposit_money')->nullable();
             $table->double('status')->default(1);
+            $table->enum('status_mony',['0','1','2','3'])->default('0');
             // if add adress of wallet
             $table->timestamps();
         });

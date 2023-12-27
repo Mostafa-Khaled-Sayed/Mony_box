@@ -18,8 +18,7 @@ use App\Http\Controllers\web\ChangePasswordController;
 use App\Http\Controllers\Mony\WithdrawController;
 use App\Http\Controllers\Dashboard\ReportsController;
 use App\Events\MyEvent;
-
-
+use App\Http\Controllers\Recharge\RechargeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('companycharge/{id}', [HomeController::class, 'companycharge'])->name('companycharge');
     Route::get('contycharge/{id}', [HomeController::class, 'contycharge'])->name('contycharge');
     Route::get('/companycharge/{id}', [HomeController::class, 'companycharge'])->name('companycharge');
-
+Route::post('rchargeUser',[RechargeController::class, 'rchargeUser'] );
     Route::resource('autodata', AutoController::class);
     Route::get('autodataindex/{id}', [AutoController::class, 'index'])->name('autodataindex');
     Route::resource('deposite', DepsoiteController::class);

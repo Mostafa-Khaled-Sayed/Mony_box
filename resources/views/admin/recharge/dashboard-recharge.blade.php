@@ -15,7 +15,7 @@ active
 @endif
   <div class="main-content">
     <div class="container">
-        
+
       <div class="web-home-content assets-card  m-0">
 
         <a data-toggle="modal" data-target="#the-goal" class="btn">اضافة دولة</a>
@@ -31,6 +31,10 @@ active
                             <label class="col-form-label">اسم الدولة</label>
                             <input type="text" name="name" class="form-control" required />
                         </div>
+                        {{-- <div class="form-group col-md-6">
+                            <label class="col-form-label">اسم عمله الدوله</label>
+                            <input type="text" name="currency" class="form-control" required />
+                        </div> --}}
                         <div class="form-group col-md-6">
                             <label class="col-form-label">الصورة</label>
                             <input type="file" class="form-control" required name="countryImage" accept="image/*" />
@@ -61,7 +65,7 @@ active
     </div>
 </div>
 
-           
+
         </div>
       </div>
     </div>
@@ -87,7 +91,7 @@ active
       crossorigin="anonymous"></script>
     <script>
       $('.country-item').on('click', function (e) {
-         
+
         $(this).toggleClass('active').siblings().removeClass('active')
         var countryName = $(this).find('.select-name').text();
         var countryPound = $(this).find('.countryPound').text();
@@ -97,7 +101,7 @@ active
       });
 
       $(document).ready(() => {
-          
+
       let template = `<div class='item d-flex'><input type="text" name="items[]"  class="form-control" placeholder="اضافة مزود أخر" /><button id="remove-input" class="remove btn">X</button></div>`;
 
       $("#add").on("click", (e) => {
@@ -109,7 +113,7 @@ active
     })
     });
     </script>
-    
+
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

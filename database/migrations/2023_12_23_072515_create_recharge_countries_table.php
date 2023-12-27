@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('country_name');
             $table->string('country_image');
             $table->string('country_background');
+            // $table->string('currency');
             $table->boolean('status');
+
             $table->timestamps();
         });
     }

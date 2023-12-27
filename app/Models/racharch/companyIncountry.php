@@ -14,7 +14,9 @@ class companyIncountry extends Model
         return $this->hasMany(PackagePrice::class,'company_incountrie_id')->where('status', 1);
     }
     public function Package(){
-        return $this->hasMany(Package::class,'company_incountrie_id')->where('status', 1);
+        return $this->hasMany(Package::class,'company_incountrie_id')->where('status', 1);}
+    public function Company(){
+        return $this->belongsTo(RechargeCountry::class, 'recharge_countrie_id');
     }
-    
+
 }

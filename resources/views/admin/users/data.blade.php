@@ -28,15 +28,17 @@ active
             <th scope="col">التكلفة</th>
             <th scope="col">العملة </th>
             <th scope="col">رقم العميل</th>
+            <th scope="col"> المزود</th>
+            <th scope="col"> الدوله</th>
             <th scope="col">المزيد</th>
           </tr>
         </thead>
         <tbody>
 
             @foreach($wait as $index=>$value)
-          <tr>
+ <tr>
             <th scope="row">{{$index+1}}</th>
-            <td>{{$value->status?"ارسال الاموال ":"استلام الاموال"}}</td>
+            <td></td>
             <td>123456</td>
             <td></td>
             <td>1234568256</td>
@@ -53,6 +55,49 @@ active
             </td>
             <td>ريال</td>
             <td>826</td>
+            <td>826</td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                 المزيد
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">ربط التجهيز</a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#view">مشاهدة</a>
+                  <a class="dropdown-item" href="#">جاهزة</a>
+                  <a class="dropdown-item" href="#">الغاء العملية</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+    @endforeach
+<tr> <td>تحويل الرصيد</td></tr>
+            @foreach($datarechachWait as $index=>$val)
+
+            <tr>
+            <th scope="row">{{$index+1}}</th>
+            <td>{{$val->type?"  تحويل  رصيد ":"شحن باقه "}}</td>
+            <td>123456</td>
+            <td></td>
+            <td>{{$val->phone}}</td>
+            <td>98547</td>
+            <td>{{$val->created_at}}</td>
+            <td>مقيد</td>
+            <td>{{$val->status}}</td>
+            <td>{{$val->user->name}}</td>
+            <td scope="col">{{$val->type?$val->package->price:$val->packagePrice->price}}</td>
+            <th scope="col">{{$val->type?$val->package->price:$val->packagePrice->price}} </th>
+            <th scope="col"> </th>
+            <th scope="col">{{$val->type?$val->package->price:$val->packagePrice->price}}</th>
+            <th scope="col">العملة </th>
+            <td scope="col">{{$val->id}}</td>
+            <td scope="col">{{$val->type?$val->package->compantincom->name:$val->packagePrice->compantincom->name}}</td>
+            <td scope="col">{{$val->type?$val->package->compantincom->Company->country_name:$val->packagePrice->compantincom->Company->country_name}}</td>
+
+            <td>
+              <a href="#">ضبط</a>
+            </td>
+
             <td>
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -73,7 +118,7 @@ active
     </div>
     <div class="modal slide-bottom" id="view" tabindex="-1" aria-labelledby="staticBackdropLabel"
     aria-hidden="true">
-    <div class="modal-dialog assets-card container"> 
+    <div class="modal-dialog assets-card container">
       <div class="d-flex align-items-center justify-content-between pb-2">
         <div class="close" data-dismiss="modal" aria-label="Close">
           <svg fill="textThird" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="bn-svg" width="20"
@@ -165,7 +210,7 @@ active
                 </li>
               </ul>
           </div>
-        
+
         </div>
       </div>
     </div>
