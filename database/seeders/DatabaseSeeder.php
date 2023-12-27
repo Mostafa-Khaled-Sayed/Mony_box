@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
             CreateAdminUserSeeder::class,
             UserSeeder::class,
         ]);
+        $this->call(\Lwwcas\LaravelCountries\Database\Seeders\LcDatabaseSeeder::class);
     }
 }

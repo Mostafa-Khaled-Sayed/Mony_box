@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'name' => "12345678",
             'email' => "12345678@gmail.com",
             'phone' => "12345678",
+            'roles_name' => 'user',
             'password' => Hash::make("12345678"),
             'code_invention' => "12345678",
             "score"=>10,

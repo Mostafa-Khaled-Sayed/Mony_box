@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('read')->default(0);
             $table->enum('type', ['register', 'send', 'withdrow', 'convert','another' , 'updatUser'])->default('another');
             $table->enum('status', ['جاهزه','غير جاهزه', 'قيد الانتظار' ]);
-            $table->text('message')->default('..');
+            $table->text('message');
             $table->timestamps();
         });
     }

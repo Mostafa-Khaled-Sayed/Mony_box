@@ -29,7 +29,7 @@ use App\Http\Controllers\Dashboard\{
     UserController,
     AnnouncementController,
     DatanormaleController,
-     DatamoneyController,
+    DatamoneyController,
     ImageannouncementsController
 };
 use App\Http\Controllers\Mony\AutoController;
@@ -81,20 +81,20 @@ Route::group(
         Route::post('/dashboard/data/delete', [DataController::class, 'delete']);
         Route::post('/dashboard/data/edit', [DataController::class, 'update']);
 
-//notification
-Route::resource('packageprice',ReachargePriceController::class);
+        //notification
+        Route::resource('packageprice', ReachargePriceController::class);
 
-Route::resource('recharge',RechargeController::class);
-Route::get('recharge/destroy/{id}',[RechargeController::class,'destroy'])->name('recharge.destroy');
-Route::post('updatecompany',[RechargeController::class,'updatecompany'])->name('updatecompany');
-Route::get('destroycompany/{id}',[RechargeController::class,'destroycompany'])->name('recharge.destroycompany');
-Route::resource('package',ReachargepakageController::class);
-Route::get('createPrice/{id}',[RechargeController::class,'createPrice'])->name('createPrice');
-Route::get('createPackage/{id}',[RechargeController::class,'createPackage'])->name('createPackage');
-//تغيير الصوره و الباك جروند
-Route::post('changebackground/{id}',[RechargeController::class,'createPrice'])->name('changebackground');
-Route::post('changeImage/{id}',[RechargeController::class,'createPackage'])->name('changeImage');
-///////////////
+        Route::resource('recharge', RechargeController::class);
+        Route::get('recharge/destroy/{id}', [RechargeController::class, 'destroy'])->name('recharge.destroy');
+        Route::post('updatecompany', [RechargeController::class, 'updatecompany'])->name('updatecompany');
+        Route::get('destroycompany/{id}', [RechargeController::class, 'destroycompany'])->name('recharge.destroycompany');
+        Route::resource('package', ReachargepakageController::class);
+        Route::get('createPrice/{id}', [RechargeController::class, 'createPrice'])->name('createPrice');
+        Route::get('createPackage/{id}', [RechargeController::class, 'createPackage'])->name('createPackage');
+        //تغيير الصوره و الباك جروند
+        Route::post('changebackground/{id}', [RechargeController::class, 'createPrice'])->name('changebackground');
+        Route::post('changeImage/{id}', [RechargeController::class, 'createPackage'])->name('changeImage');
+        ///////////////
         // //start dataNormal
         Route::get('/dataNormal', [DatanormaleController::class, 'index']);
         Route::post('/dashboard/dataNormal/store', [DatanormaleController::class, 'store']);
@@ -113,7 +113,7 @@ Route::post('changeImage/{id}',[RechargeController::class,'createPackage'])->nam
         Route::post('Attachmet/store', [ImageannouncementsController::class, 'store']);
         Route::post('Attachmet/delete', [ImageannouncementsController::class, 'delete']);
         //mony
-//MoneyTransferController
+        //MoneyTransferController
         Route::get('/today_profits/{$id}', [MoneyTransferController::class, 'todayProfit']);
         // end transfer Mony
 
@@ -129,16 +129,16 @@ Route::post('changeImage/{id}',[RechargeController::class,'createPackage'])->nam
         Route::post('dashboard/setting/update', [SettingController::class, 'update']);
         //users permission
 
-            Route::resource('roles', RoleController::class);
-            Route::resource('userspromission', UsersUserController::class);
-            //reports
-            Route::resource('reports',ControllersReportsController::class);
-          Route::get('recive',[ControllersReportsController::class, 'recive'])->name('recive');
+        Route::resource('roles', RoleController::class);
+        Route::resource('userspromission', UsersUserController::class);
+        //reports
+        Route::resource('reports', ControllersReportsController::class);
+        Route::get('recive', [ControllersReportsController::class, 'recive'])->name('recive');
 
 
-          //notification
-            Route::get('notivication', [NotificationController::class, 'index']);
-              Route::get('notivication/delete/{id}', [NotificationController::class, 'delete']);
+        //notification
+        Route::get('notivication', [NotificationController::class, 'index']);
+        Route::get('notivication/delete/{id}', [NotificationController::class, 'delete']);
         Route::get('wait/{id}', [NotificationController::class, 'wait']);
         Route::get('/ready/{id}', [NotificationController::class, 'ready']);
 
@@ -150,16 +150,14 @@ Route::post('changeImage/{id}',[RechargeController::class,'createPackage'])->nam
         Route::resource('country', CountryController::class);
 
         Route::resource('games', GameController::class);
-
     }
 
 
-//end Dashboard
+    //end Dashboard
 
-//start Dashboard
+    //start Dashboard
 
 
 );
 Storage::disk('imageCountry');
 Storage::disk('backgroundcountry');
-

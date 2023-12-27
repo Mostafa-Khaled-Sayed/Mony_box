@@ -59,12 +59,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $key => $country)
+                                @foreach ($countries as $key => $country)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $country->name }}</td>
-                                        <td><img src="{{ asset("upload/country/$country->image") }}"
-                                                alt="{{ $country->name }}" width="75" height="60"></td>
+                                        <td>{{ $country->official_name }}</td>
+                                        <td>{!! json_decode($country->emoji)->img !!}</td>
                                         <td><span
                                                 class="{{ $country->status_color() }}">{{ $country->status_value() }}</span>
                                         </td>
@@ -122,14 +121,9 @@
                                                     <div class="modal-body">
                                                         <div class="mb-3">
                                                             <label for="" class="form-label">اسم الدوله</label>
-                                                            <input class="form-control" name="name" type="text"
+                                                            <input class="form-control" name="official_name" type="text"
                                                                 required placeholder="اسم الدوله"
-                                                                value="{{ $country->name }}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="" class="form-label">علم الدوله</label>
-                                                            <input class="form-control" name="name" type="file"
-                                                                required placeholder="علم الدوله" required>
+                                                                value="{{ $country->official_name }}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="" class="form-label">الحاله</label>
@@ -142,15 +136,17 @@
                                                         </div>
                                                         <hr />
                                                         <div class="wallet">
-                                                            @foreach ($country->wallet as $wallet)
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">أسم
-                                                                        المحفظة</label>
-                                                                    <input type="text" name="wallet_name[]"
-                                                                        class="form-control" placeholder="أسم المحفظة"
-                                                                        value="{{ $wallet->wallet_name }}">
-                                                                </div>
-                                                            @endforeach
+                                                            @isset($country->wallet)
+                                                                @foreach ($country->wallet as $wallet)
+                                                                    <div class="mb-3">
+                                                                        <label for="" class="form-label">أسم
+                                                                            المحفظة</label>
+                                                                        <input type="text" name="wallet_name[]"
+                                                                            class="form-control" placeholder="أسم المحفظة"
+                                                                            value="{{ $wallet->wallet_name }}">
+                                                                    </div>
+                                                                @endforeach
+                                                            @endisset
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">

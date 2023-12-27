@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->constrained()->onDelete('cascade');
+            $table->integer('lc_country_id')->nullable();
             $table->string('wallet_name');
             $table->timestamps();
         });
