@@ -7,6 +7,7 @@ use App\Models\Datanormale;
 use Illuminate\Http\Request;
 use App\Models\announcement;
 use App\Models\Data;
+use App\Models\Game;
 use App\Models\Image;
 use App\Models\WithdrawOrDepositMoney;
 use App\Models\Profit;
@@ -143,10 +144,7 @@ class HomeController extends Controller
         $contrydata = RechargeCountry::where('status', 1)->get();
         return view('web.shnRaside.index', compact('contrydata'));
     }
-    public function game()
-    {
-        return view('web.game.index');
-    }
+
 
     public function  sendMony()
     {
@@ -179,7 +177,14 @@ class HomeController extends Controller
     }
     public function contycharge($id)
     {
-            $data= companyIncountry::with('Package', 'PackagePrice')->findOrfail($id);
-            return $data;
+        $data = companyIncountry::with('Package', 'PackagePrice')->findOrfail($id);
+        return $data;
+    }
+
+
+    public function game()
+    {
+        $get_games = Game::query()->with('offers')->get();
+        return view('web.game.index', compact('get_games'));
     }
 }

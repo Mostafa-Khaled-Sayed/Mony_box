@@ -81,16 +81,15 @@ class GameController extends Controller
             $data = $request->except('_token');
             if ($request->hasFile('image')) {
                 $image =  time() . '.' . $request->file('image')->extension();
-                $data['image']  = "upload/games/$image";
+                $data['image']  = "upload/game/$image";
                 $request->file('image')->move(public_path("upload/games/"), $image);
             }
 
             if ($request->hasFile('background_image')) {
                 $background_image =  time() . time() . '.' . $request->file('background_image')->extension();
-                $data['background_image']  = "upload/games/$image";
+                $data['background_image']  = "upload/game/$image";
                 $request->file('background_image')->move(public_path("upload/games/"), $background_image);
             }
-
             $status = $game->update($data);
             if ($status) {
                 return redirect()->route('games.index')->with(['success' => 'Successfully Updated Game']);

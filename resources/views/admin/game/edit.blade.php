@@ -19,8 +19,9 @@
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('games.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('games.update', $game->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('patch')
                         <div class="row">
                             <h3 class="title-card mb-5 text-center sub-title">تعديل اللعبة</h3>
                             <div class="col-12 col-lg-6 col-md-6 col-xl-6">
@@ -28,7 +29,7 @@
                                     <label for="" class="form-label">أسم اللاعب</label>
                                     <input type="text" name="title" id=""
                                         class="form-control @error('title') is-invalid @enderror" placeholder="العنوان"
-                                        required aria-describedby="helpId"  value="{{ $game->title }}"/>
+                                        required aria-describedby="helpId" value="{{ $game->title }}" />
                                     @error('title')
                                         <small id="helpId" class="text-danger">{{ $message }}</small>
                                     @enderror

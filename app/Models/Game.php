@@ -10,4 +10,8 @@ class Game extends Model
 {
     use HasFactory, StatusCountry;
     protected $guarded = [];
+    public function offers()
+    {
+        return $this->hasMany(Offer_game::class);
+    }
 }
