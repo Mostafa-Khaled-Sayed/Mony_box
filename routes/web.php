@@ -18,8 +18,7 @@ use App\Http\Controllers\web\ChangePasswordController;
 use App\Http\Controllers\Mony\WithdrawController;
 use App\Http\Controllers\Dashboard\ReportsController;
 use App\Events\MyEvent;
-
-
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +92,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/withdrow', [FatoraController::class, 'withdrow'])->name('withdrow');
         Route::post('/checkout', [FatoraController::class, 'store']);
 
+        Route::get('sendMony/get_wallet', [HomeController::class, 'get_wallet']);
+        Route::post('sendMony/posts', [ReportController::class, 'store']);
         Route::get("game/get_data", [HomeController::class, "get_data"]);
         Route::post('game/post_data', [HomeController::class, 'post_data']);
         Route::get('/test', [MonyMoneyTransferController::class, 'index'])->name('test');

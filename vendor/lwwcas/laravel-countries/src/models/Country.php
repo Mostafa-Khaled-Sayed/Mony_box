@@ -2,6 +2,7 @@
 
 namespace Lwwcas\LaravelCountries\Models;
 
+use App\Models\Wallet;
 use App\Trait\StatusCountry;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -154,6 +155,11 @@ class Country extends Model
     public function scopeWhereName($query, $name)
     {
         return $query->whereTranslation('name', $name)->withTranslation();
+    }
+
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class, 'lc_country_id', 'id');
     }
 
     /**

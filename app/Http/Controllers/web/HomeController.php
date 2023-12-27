@@ -24,6 +24,7 @@ use App\Models\racharch\companyIncountry;
 use App\Models\racharch\Package;
 use App\Models\racharch\PackagePrice;
 use App\Models\Taxrule;
+use Lwwcas\LaravelCountries\Models\Country;
 
 // use App\Trait\Reward;
 class HomeController extends Controller
@@ -151,7 +152,10 @@ class HomeController extends Controller
 
     public function  sendMony()
     {
-        return view('web.sendMony.index');
+        $countries = Country::query()->where('status', '1')->get();
+        $tax = Taxrule::query()->findOrFail(1);
+
+        return view('web.sendMony.index', compact('countries', 'tax'));
     }
     public function  vodafonMony()
     {
@@ -205,4 +209,13 @@ class HomeController extends Controller
         $status = Order_game::query()->create($data);
         return response()->json(['status' => $status]);
     }
+
+    public function get_wallet(Request $request)
+    {
+        $country = Country::query()->where('id', $request->id)->first();
+        $wallet = $country->wallets;
+        return response()->json(['wallet' => $wallet]);
+    }
+
+
 }
