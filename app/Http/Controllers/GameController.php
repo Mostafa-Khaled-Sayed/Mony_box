@@ -37,7 +37,12 @@ class GameController extends Controller
             $image =  time() . '.' . $request->file('image')->extension();
             $data['image']  = "upload/games/$image";
             $request->file('image')->move(public_path("upload/games/"), $image);
+
+            $background_image =  time() . time() . '.' . $request->file('background_image')->extension();
+            $data['background_image']  = "upload/games/$image";
+            $request->file('background_image')->move(public_path("upload/games/"), $background_image);
             $status = Game::query()->create($data);
+
             if ($status) {
                 return redirect()->route('games.index')->with(['success' => 'Successfully Created Game']);
             } else {
@@ -79,6 +84,13 @@ class GameController extends Controller
                 $data['image']  = "upload/games/$image";
                 $request->file('image')->move(public_path("upload/games/"), $image);
             }
+
+            if ($request->hasFile('background_image')) {
+                $background_image =  time() . time() . '.' . $request->file('background_image')->extension();
+                $data['background_image']  = "upload/games/$image";
+                $request->file('background_image')->move(public_path("upload/games/"), $background_image);
+            }
+
             $status = $game->update($data);
             if ($status) {
                 return redirect()->route('games.index')->with(['success' => 'Successfully Updated Game']);

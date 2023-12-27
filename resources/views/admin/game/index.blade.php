@@ -34,11 +34,11 @@
                         {{-- @endcan --}}
 
                     </div>
-                       <div class="col-sm-1 col-md-2">
+                    <div class="col-sm-1 col-md-2">
 
-                      
-                        <a class=" btn btn-sm btn-primary" data-toggle="modal" data-target="#addcountry" >اضافة دولة  </a>
-                    
+
+                        <a class=" btn btn-sm btn-primary" data-toggle="modal" data-target="#addcountry">اضافة دولة </a>
+
 
                     </div>
                 </div>
@@ -53,18 +53,17 @@
                 @endif
                 <div class="card-body">
                     <div class="table-responsive hoverable-table">
-                        <table class="display nowrap " id="tableDashboard" data-page-length='50' style=" text-align: center;">
+                        <table class="display nowrap " id="tableDashboard" data-page-length='50'
+                            style=" text-align: center;">
                             <thead>
                                 <tr>
                                     <th class="wd-10p border-bottom-0">الرقم</th>
                                     <th class="wd-15p border-bottom-0">اسم العبه</th>
-                                    <th class="wd-15p border-bottom-0">الوصف</th>
-                                    <th class="wd-15p border-bottom-0">السعر</th>
-                                    <th class="wd-20p border-bottom-0">رمز اللعبة</th>
-                                    <th class="wd-15p border-bottom-0">رمز الكود الموحد</th>
-                                     <th class="wd-15p border-bottom-0">الصورة </th>
-                                      <th class="wd-15p border-bottom-0">الخلفية</th>
-                                       <th class="wd-15p border-bottom-0"></th>
+                                    <th class="wd-15p border-bottom-0">الصورة </th>
+                                    <th class="wd-10p border-bottom-0">الحاله</th>
+                                    <th class="wd-15p border-bottom-0">تاريخ الأنشاء</th>
+                                    <th class="wd-15p border-bottom-0">تاريخ التعديل</th>
+                                    <th class="wd-15p border-bottom-0">العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,12 +78,25 @@
                                         <td>{{ $game->created_at }}</td>
                                         <td>{{ $game->updated_at }}</td>
                                         <td>
-                                            <a class="btn btn-sm btn-primary" href="{{ route('games.edit', $game->id) }}"
-                                                title="التعديل">
-                                                التعديل</a>
-                                            <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                data-toggle="modal" href="#modaldemo8-{{ $game->id }}" title="حذف">
-                                                حذف</a>
+                                            <div class="dropdown">
+                                                <button id="my-dropdown" class="btn btn-primary dropdown-toggle"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">العمليات</button>
+                                                <div class="dropdown-menu" aria-labelledby="my-dropdown">
+                                                    <a href="{{ route('offer_game.index') }}" class="dropdown-item">عرض
+                                                        الفئات</a>
+                                                    <a href="{{ route('offer_game.create', $game->id) }}" class="dropdown-item">انشاء
+                                                        فئه</a>
+                                                    <a class="dropdown-item" href="{{ route('games.edit', $game->id) }}"
+                                                        title="التعديل">
+                                                        التعديل</a>
+                                                    <a class="modal-effect dropdown-item" data-effect="effect-scale"
+                                                        data-toggle="modal" href="#modaldemo8-{{ $game->id }}"
+                                                        title="حذف">
+                                                        حذف</a>
+                                                </div>
+                                            </div>
+
                                         </td>
                                     </tr>
                                     <!--  start effects delete user -->
@@ -129,70 +141,8 @@
     </div>
     <!-- Container closed -->
     </div>
-    <!-- main-content closed -->
-    <div class="modal slide-bottom" id="addcountry" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="card">
-                <form method="post" class="card-body">
-                    <input type="hidden" value="" />
-                    <div class="row">
-                        <h4 class="card-title col-12 mb-4">تعديل اسم دولة</h4>
-                        <div class="form-group col-md-6">
-                            <label class="col-form-label">اسم الدولة</label>
-                            <input type="text" value="" name="name" class="form-control" required />
-                        </div>
 
-                        <div class="form-group col-md-6">
-                            <label class="col-form-label">التفعيل</label>
-                            <select name="status" class="form-control">
-                                <option value="1">مفعل</option>
-                                <option value="0">غير مفعل</option>
-                            </select>
-                        </div>
-    <h4 class="card-title col-12 mb-4"> حدد الحقول المتاحة للفئة</h4>
-              <div class="col-12">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                  <label class="form-check-label" for="inlineCheckbox1">أسم اللاعب</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                  <label class="form-check-label" for="inlineCheckbox2">رقم اللاعب</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                  <label class="form-check-label" for="inlineCheckbox3">رقم الأيدى</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                  <label class="form-check-label" for="inlineCheckbox4">رقم الهاتف</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
-                  <label class="form-check-label" for="inlineCheckbox5">زون ايدى</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6">
-                  <label class="form-check-label" for="inlineCheckbox6">البريد الاكترونى</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7">
-                  <label class="form-check-label" for="inlineCheckbox7">أسم السيرفر / موقع السيرفر</label>
-                </div>
-               
-              </div>
-
-            </div>
-
-                   
-                        <button type="submit" class="btn back-color col-8 my-5">موافق</button>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
-</div>
 
 @endsection
 @section('script')

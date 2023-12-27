@@ -34,6 +34,7 @@ use App\Http\Controllers\Dashboard\{
 };
 use App\Http\Controllers\Mony\AutoController;
 use App\Http\Controllers\Mony\MoneyTransferController;
+use App\Http\Controllers\OfferGameController;
 use App\Http\Controllers\ReportsController as ControllersReportsController;
 
 /*
@@ -135,7 +136,15 @@ Route::group(
         Route::resource('reports', ControllersReportsController::class);
         Route::get('recive', [ControllersReportsController::class, 'recive'])->name('recive');
 
+        // Section offer_game 
+        Route::get('offer_game', [OfferGameController::class, 'index'])->name('offer_game.index');
+        Route::get('offer_game/create/{id}', [OfferGameController::class, 'create'])->name('offer_game.create');
+        Route::post('offer_game/store', [OfferGameController::class, 'store'])->name('offer_game.store');
+        Route::get('offer_game/edit/{id}', [OfferGameController::class, 'edit'])->name('offer_game.edit');
+        Route::post('offer_game/update/{id}', [OfferGameController::class, 'update'])->name('offer_game.update');
+        Route::delete('offer_game/destroy/{id}', [OfferGameController::class, 'destroy'])->name('offer_game.destroy');
 
+        
         //notification
         Route::get('notivication', [NotificationController::class, 'index']);
         Route::get('notivication/delete/{id}', [NotificationController::class, 'delete']);

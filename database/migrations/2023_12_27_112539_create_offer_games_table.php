@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('offer_games', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('country_id')->constrained()->onDelete('cascade');
-            $table->string('title');
+            $table->foreignId('game_id')->constrained()->onDelete('cascade');
+            $table->enum('status', ['0', '1'])->default(0);
+            $table->string('category_name');
+            $table->string('price')->default('0');
             $table->string('image');
             $table->string('background_image');
-            $table->enum('status', ['0', '1'])->default('0');
+            $table->text('description');
+            $table->string('game_code');
+            $table->string('unified_code');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('offer_games');
     }
 };
