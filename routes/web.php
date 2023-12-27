@@ -93,7 +93,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/checkout', [FatoraController::class, 'store']);
 
         Route::get('sendMony/get_wallet', [HomeController::class, 'get_wallet']);
-        Route::post('sendMony/posts', [ReportController::class, 'store']);
+        Route::post('sendMony/posts', [ReportController::class, 'store'])->name('posts');
         Route::get("game/get_data", [HomeController::class, "get_data"]);
         Route::post('game/post_data', [HomeController::class, 'post_data']);
         Route::get('/test', [MonyMoneyTransferController::class, 'index'])->name('test');

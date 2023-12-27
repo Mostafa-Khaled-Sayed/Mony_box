@@ -300,6 +300,9 @@
                 var bank_name = $('#bank_name').val();
                 var account_number = $('#account_number').val();
                 var qr_code = $('#qr_code')[0].files[0];
+                // Get the filename from the file input
+                var qrCodeFileName = qr_code ? qr_code.name : '';
+                console.log(qrCodeFileName);
                 var reference_number = $('#reference_number').val();
                 var note = $('#note').val();
                 var appian = $('#appian').val();
@@ -344,11 +347,13 @@
                             bank_name: bank_name,
                             account_number: account_number,
                             phone: phone,
-                            qr_code: qr_code,
+                            qr_code: qrCodeFileName,
                             reference_number: reference_number,
                             note: note,
                             appian: appian,
                         },
+                        contentType: 'application/x-www-form-urlencoded',
+                        processData: true,
                         success: function(response) {
                             window.location.reload();
                         },
@@ -356,10 +361,10 @@
                             // Reset the flag when the request is complete, regardless of success or failure
                             isRequestInProgress = false;
                         },
-                        error: function(error) {
-                            // Handle errors here
-                            console.log(error);
-
+                        error: function(xhr, status, error) {
+                            console.log('Error:', error);
+                            // Handle error response
+                            console.log('Error Status:', xhr.status);
                             // Reset the flag in case of an error
                             isRequestInProgress = false;
                         }

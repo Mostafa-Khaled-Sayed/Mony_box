@@ -30,9 +30,13 @@ class ReportController extends Controller
     {
         try {
             $data = $request->except('_token');
-            // $qr = time() . '.' . $request->file('qr_code')->extension();
-            // $data['qr_code'] = $qr;
-            // $request->file('qr_code')->move(public_path('upload/sendmony/'), $qr);
+            $data['user_id'] = auth()->user()->id;
+            if ($request->hasFile('qr_code')) {
+                $qr = time() . '.' . $request->file('qr_code')->extension();
+                $data['qr_code'] = $qr;
+                $request->file('qr_code')->move(public_path('upload/sendmony/'), $qr);
+            }
+
             Report::query()->create($data);
             return response()->json(['success' => 'Successfully Create Send Mony']);
         } catch (\Exception $ex) {
