@@ -45,7 +45,9 @@
                     </div>
                 @endif
                 <div class="card-body">
+                    {!! $countries->links() !!}
                     <div class="table-responsive hoverable-table">
+                        
                         <table class="display nowrap " id="tableDashboard" data-page-length='50'>
                             <thead>
                                 <tr>

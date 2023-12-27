@@ -36,6 +36,7 @@ use App\Http\Controllers\Mony\AutoController;
 use App\Http\Controllers\Mony\MoneyTransferController;
 use App\Http\Controllers\OfferGameController;
 use App\Http\Controllers\ReportsController as ControllersReportsController;
+use App\Http\Controllers\TaxruleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,7 +145,7 @@ Route::group(
         Route::post('offer_game/update/{id}', [OfferGameController::class, 'update'])->name('offer_game.update');
         Route::delete('offer_game/destroy/{id}', [OfferGameController::class, 'destroy'])->name('offer_game.destroy');
 
-        
+        Route::resource('tax_rules', TaxruleController::class);
         //notification
         Route::get('notivication', [NotificationController::class, 'index']);
         Route::get('notivication/delete/{id}', [NotificationController::class, 'delete']);

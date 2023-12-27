@@ -14,6 +14,8 @@ use App\Models\Profit;
 use App\Models\Score;
 use App\Models\User;
 use App\Models\Notification;
+use App\Models\Offer_game;
+use App\Models\Order_game;
 use App\Models\Tax;
 use App\Trait\Reward;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +23,7 @@ use App\Models\racharch\RechargeCountry;
 use App\Models\racharch\companyIncountry;
 use App\Models\racharch\Package;
 use App\Models\racharch\PackagePrice;
+use App\Models\Taxrule;
 
 // use App\Trait\Reward;
 class HomeController extends Controller
@@ -186,5 +189,20 @@ class HomeController extends Controller
     {
         $get_games = Game::query()->with('offers')->get();
         return view('web.game.index', compact('get_games'));
+    }
+
+    public function get_data(Request $request)
+    {
+        $data['offer'] = Offer_game::query()->where('id', $request->id)->with(['game'])->get();
+        $data['game'] = $data['offer'][0]->game;
+        $data['tax'] = Taxrule::query()->findOrFail(1);
+        return response()->json(['data' => $data]);
+    }
+    public function post_data(Request $request)
+    {
+        $data = $request->except('_token');
+        $data['user_id'] = auth()->user()->id;
+        $status = Order_game::query()->create($data);
+        return response()->json(['status' => $status]);
     }
 }

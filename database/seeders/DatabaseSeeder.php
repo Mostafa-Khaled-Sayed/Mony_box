@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PermissionTableSeeder::class,
             CreateAdminUserSeeder::class,
             UserSeeder::class,
+            TaxruleSeeder::class
         ]);
         $this->call(\Lwwcas\LaravelCountries\Database\Seeders\LcDatabaseSeeder::class);
     }

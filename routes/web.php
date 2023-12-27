@@ -93,8 +93,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/withdrow', [FatoraController::class, 'withdrow'])->name('withdrow');
         Route::post('/checkout', [FatoraController::class, 'store']);
 
-
-
+        Route::get("game/get_data", [HomeController::class, "get_data"]);
+        Route::post('game/post_data', [HomeController::class, 'post_data']);
         Route::get('/test', [MonyMoneyTransferController::class, 'index'])->name('test');
     });
 });

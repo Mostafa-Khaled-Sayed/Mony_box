@@ -51,34 +51,34 @@
 </head>
 <?php if(App::getLocale() == 'ar'): ?>
 
-    <body class="g-sidenav-show rtl bg-gray-100">
+    <body class="bg-gray-100 g-sidenav-show rtl">
         <aside
-            class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-end me-3 rotate-caret"
+            class="my-3 border-0 sidenav navbar navbar-vertical navbar-expand-xs border-radius-xl fixed-end me-3 rotate-caret"
             id="sidenav-main">
         <?php else: ?>
 
-            <body class="g-sidenav-show  bg-gray-100">
+            <body class="bg-gray-100 g-sidenav-show">
                 <aside
-                    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
+                    class="my-3 border-0 sidenav navbar navbar-vertical navbar-expand-xs border-radius-xl fixed-start ms-3 "
                     id="sidenav-main">
 <?php endif; ?>
 
 <div class="sidenav-header">
-    <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute start-0 top-0 d-none d-xl-none"
+    <i class="top-0 p-3 cursor-pointer fas fa-times text-secondary opacity-5 position-absolute start-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
-    <a class="navbar-brand m-0" href="<?php echo e(url('/')); ?>">
+    <a class="m-0 navbar-brand" href="<?php echo e(url('/')); ?>">
         <h4 class="me-1 font-weight-bold"><?php echo e(trans('admin.dash')); ?></h4>
     </a>
 </div>
-<hr class="horizontal dark mt-0">
-<div class="collapse navbar-collapse px-0 w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+<hr class="mt-0 horizontal dark">
+<div class="w-auto px-0 collapse navbar-collapse max-height-vh-100 h-100" id="sidenav-collapse-main">
     <ul class="navbar-nav">
 
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('البيانات')): ?>
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active2'); ?> " href="<?php echo e(url('/data-admin')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>box-3d-50</title>
@@ -134,6 +134,34 @@
                     </div>
                     <h5 class="nav-link-text me-1">الدوله</h5>
                 </a>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo $__env->yieldContent('active2'); ?> " href="<?php echo e(route('tax_rules.index')); ?>">
+                        <div
+                            class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
+                            <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>box-3d-50</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                        <g transform="translate(1716.000000, 291.000000)">
+                                            <g transform="translate(603.000000, 0.000000)">
+                                                <path class="color-background"
+                                                    d="M22.7597136,19.3090182 L38.8987031,11.2395234 C39.3926816,10.9925342 39.592906,10.3918611 39.3459167,9.89788265 C39.249157,9.70436312 39.0922432,9.5474453 38.8987261,9.45068056 L20.2741875,0.1378125 L20.2741875,0.1378125 C19.905375,-0.04725 19.469625,-0.04725 19.0995,0.1378125 L3.1011696,8.13815822 C2.60720568,8.38517662 2.40701679,8.98586148 2.6540352,9.4798254 C2.75080129,9.67332903 2.90771305,9.83023153 3.10122239,9.9269862 L21.8652864,19.3090182 C22.1468139,19.4497819 22.4781861,19.4497819 22.7597136,19.3090182 Z">
+                                                </path>
+                                                <path class="color-background opacity-6"
+                                                    d="M23.625,22.429159 L23.625,39.8805372 C23.625,40.4328219 24.0727153,40.8805372 24.625,40.8805372 C24.7802551,40.8805372 24.9333778,40.8443874 25.0722402,40.7749511 L41.2741875,32.673375 L41.2741875,32.673375 C41.719125,32.4515625 42,31.9974375 42,31.5 L42,14.241659 C42,13.6893742 41.5522847,13.241659 41,13.241659 C40.8447549,13.241659 40.6916418,13.2778041 40.5527864,13.3472318 L24.1777864,21.5347318 C23.8390024,21.7041238 23.625,22.0503869 23.625,22.429159 Z">
+                                                </path>
+                                                <path class="color-background opacity-6"
+                                                    d="M20.4472136,21.5347318 L1.4472136,12.0347318 C0.953235098,11.7877425 0.352562058,11.9879669 0.105572809,12.4819454 C0.0361450918,12.6208008 6.47121774e-16,12.7739139 0,12.929159 L0,30.1875 L0,30.1875 C0,30.6849375 0.280875,31.1390625 0.7258125,31.3621875 L19.5528096,40.7750766 C20.0467945,41.0220531 20.6474623,40.8218132 20.8944388,40.3278283 C20.963859,40.1889789 21,40.0358742 21,39.8806379 L21,22.429159 C21,22.0503869 20.7859976,21.7041238 20.4472136,21.5347318 Z">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <h5 class="nav-link-text me-1">نسبة الضريبه</h5>
+                    </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active2'); ?> " href="<?php echo e(route('country.index')); ?>">
@@ -197,7 +225,7 @@
         <li class="nav-item">
             <a class="nav-link <?php echo $__env->yieldContent('active2'); ?> " href="<?php echo e(route('recharge.index')); ?>">
                 <div
-                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                    class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                     <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <title>box-3d-50</title>
@@ -228,7 +256,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active2'); ?> " href="<?php echo e(url('/data')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>box-3d-50</title>
@@ -259,7 +287,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active12'); ?> " href="<?php echo e(url('/dataNormal')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>box-3d-50</title>
@@ -292,7 +320,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active7'); ?>" href="<?php echo e(route('announcements.index')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>news</title>
@@ -326,7 +354,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active4'); ?>" href="<?php echo e(url('/users')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>news</title>
@@ -360,7 +388,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active11'); ?>" href="<?php echo e(url('/tax')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>shop </title>
@@ -389,7 +417,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active8'); ?>" href="<?php echo e(url('/imagesSlider')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -420,7 +448,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active13'); ?>" href="<?php echo e(url('/setting')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>shop </title>
@@ -448,7 +476,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('activerepordep'); ?>" href="<?php echo e(route('reports.create')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>shop </title>
@@ -476,7 +504,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('activereporwith'); ?>" href="<?php echo e(route('recive')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>shop </title>
@@ -504,7 +532,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('activeturn'); ?>" href="<?php echo e(url('reports')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>shop </title>
@@ -530,7 +558,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('allDataMony'); ?>" href="<?php echo e(url('/allDataMony')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>shop </title>
@@ -557,7 +585,7 @@
         <li class="nav-item">
             <a class="nav-link <?php echo $__env->yieldContent('notification'); ?>" href="<?php echo e(url('/notivication')); ?>">
                 <div
-                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                    class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                     <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <title>shop </title>
@@ -584,7 +612,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active14'); ?>" href="<?php echo e(url('/userspromission')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>shop </title>
@@ -612,7 +640,7 @@
         <li class="nav-item">
             <a class="nav-link <?php echo $__env->yieldContent('active14'); ?>" href="<?php echo e(url('/data')); ?>">
                 <div
-                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                    class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                     <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <title>shop </title>
@@ -641,7 +669,7 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo $__env->yieldContent('active15'); ?>" href="<?php echo e(url('/roles')); ?>">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        class="text-center bg-white shadow icon icon-shape icon-sm border-radius-md ms-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>shop </title>
@@ -670,16 +698,16 @@
     </ul>
 </div>
 </aside>
-<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg overflow-hidden">
+<main class="mt-1 overflow-hidden main-content position-relative max-height-vh-100 h-100 border-radius-lg">
 
     <!-- Navbar ar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+    <nav class="px-0 mx-4 shadow-none navbar navbar-main navbar-expand-lg border-radius-xl" id="navbarBlur"
         navbar-scroll="true">
-        <div class="container-fluid py-1 px-3">
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 px-0 card" id="navbar">
+        <div class="px-3 py-1 container-fluid">
+            <div class="px-0 mt-2 collapse navbar-collapse mt-sm-0 card" id="navbar">
 
 
-                <div class="navbar-nav me-auto ms-0 justify-content-between px-4 d-flex w-100">
+                <div class="px-4 navbar-nav me-auto ms-0 justify-content-between d-flex w-100">
                     <div class="d-flex">
                         <li class="nav-item ps-2 d-flex align-items-center">
                             <div class="dropdown">
@@ -701,11 +729,11 @@
 
                         </li>
                         <li class="nav-item dropdown ps-2 d-flex align-items-center ">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
+                            <a href="javascript:;" class="p-0 nav-link text-body" id="dropdownMenuButton"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-bell cursor-pointer"></i>
+                                <i class="cursor-pointer fa fa-bell"></i>
                             </a>
-                            <ul class="dropdown-menu dropdown-notifications px-2 py-3 me-sm-n4"
+                            <ul class="px-2 py-3 dropdown-menu dropdown-notifications me-sm-n4"
                                 aria-labelledby="dropdownMenuButton">
                                 <li class="counNotification">
                                     <p data-count="0" class="notif-count">عدد الاشعرات غير المقروائه
@@ -717,16 +745,16 @@
                                             <a class="dropdown-item border-radius-md"
                                                 href="<?php echo e(route('reports.show', $val->user_id)); ?>">
 
-                                                <div class="d-flex py-1">
+                                                <div class="py-1 d-flex">
                                                     <div class="my-auto">
                                                         <i class="fa fa-clock me-1 "></i>
                                                     </div>
-                                                    <div class="  d-flex flex-column justify-content-center">
+                                                    <div class=" d-flex flex-column justify-content-center">
                                                         <h6
-                                                            class="text-sm font-weight-normal mb-1  notification-label">
+                                                            class="mb-1 text-sm font-weight-normal notification-label">
 
                                                         </h6>
-                                                        <p class="text-xs text-secondary mb-0 notification-clock">
+                                                        <p class="mb-0 text-xs text-secondary notification-clock">
 
                                                             <span> بانشاء حساب جديد</span><?php echo e($val->user->name); ?> <Span>
                                                                 قام</Span>
@@ -738,16 +766,16 @@
                                     <?php elseif($val->type == 'send'): ?>
                                         <li class="mb-2 notification-scroll">
                                             <a class="dropdown-item border-radius-md" href="javascript:;">
-                                                <div class="d-flex py-1">
+                                                <div class="py-1 d-flex">
                                                     <div class="my-auto">
                                                         <i class="fa fa-clock me-1 "></i>
                                                     </div>
-                                                    <div class="  d-flex flex-column justify-content-center">
+                                                    <div class=" d-flex flex-column justify-content-center">
                                                         <h6
-                                                            class="text-sm font-weight-normal mb-1  notification-label">
+                                                            class="mb-1 text-sm font-weight-normal notification-label">
 
                                                         </h6>
-                                                        <p class="text-xs text-secondary mb-0 notification-clock">
+                                                        <p class="mb-0 text-xs text-secondary notification-clock">
 
                                                             <span>بايداع
                                                                 مبلغ</span><?php echo e($val->user->name); ?><span>قام</span>
@@ -761,16 +789,16 @@
                                         <li class="mb-2 notification-scroll">
                                             <a class="dropdown-item border-radius-md"
                                                 href="<?php echo e(route('reports.show', $val->user_id)); ?>">
-                                                <div class="d-flex py-1">
+                                                <div class="py-1 d-flex">
                                                     <div class="my-auto">
                                                         <i class="fa fa-clock me-1 "></i>
                                                     </div>
-                                                    <div class="  d-flex flex-column justify-content-center">
+                                                    <div class=" d-flex flex-column justify-content-center">
                                                         <h6
-                                                            class="text-sm font-weight-normal mb-1  notification-label">
+                                                            class="mb-1 text-sm font-weight-normal notification-label">
 
                                                         </h6>
-                                                        <p class="text-xs text-secondary mb-0 notification-clock">
+                                                        <p class="mb-0 text-xs text-secondary notification-clock">
                                                             <i class="fa fa-clock me-1 "></i>
 
                                                         </p>
@@ -782,16 +810,16 @@
                                         <li class="mb-2 notification-scroll">
                                             <a class="dropdown-item border-radius-md"
                                                 href="<?php echo e(route('reports.show', $val->user_id)); ?>">
-                                                <div class="d-flex py-1">
+                                                <div class="py-1 d-flex">
                                                     <div class="my-auto">
                                                         <i class="fa fa-clock me-1 "></i>
                                                     </div>
-                                                    <div class="  d-flex flex-column justify-content-center">
+                                                    <div class=" d-flex flex-column justify-content-center">
                                                         <h6
-                                                            class="text-sm font-weight-normal mb-1  notification-label">
+                                                            class="mb-1 text-sm font-weight-normal notification-label">
 
                                                         </h6>
-                                                        <p class="text-xs text-secondary mb-0 notification-clock">
+                                                        <p class="mb-0 text-xs text-secondary notification-clock">
                                                             <span><?php echo e($val->SendOrrecive->withdraw_money); ?></span>
                                                             $<span>بسحب
                                                                 مبلغ</span><?php echo e($val->user->name); ?><span>قام</span>
@@ -810,7 +838,7 @@
                     </div>
 
                     <li class="nav-item d-flex align-items-center">
-                        <a href="<?php echo e(route('logout')); ?>" class="nav-link text-body font-weight-bold px-0">
+                        <a href="<?php echo e(route('logout')); ?>" class="px-0 nav-link text-body font-weight-bold">
                             <i class="fa fa-user me-sm-1"></i>
                             <span class="d-sm-inline d-none">تسجيل الخروج</span>
                         </a>
@@ -819,7 +847,7 @@
 
 
                     <div class="nav-item d-xl-none pe-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                        <a href="javascript:;" class="p-0 nav-link text-body" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">
                                 <i class="sidenav-toggler-line"></i>
                                 <i class="sidenav-toggler-line"></i>
@@ -833,7 +861,7 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    <div class="container-fluid py-1">
+    <div class="py-1 container-fluid">
         <?php echo $__env->yieldContent('main'); ?>
 
 
@@ -899,7 +927,7 @@
         var newNotificationHtml = `<span class="font-weight-bold notification-label">` + data.code_invention +
             `</span><br>` +
             data.name;
-        var newnotificationClock = `<p class="text-xs text-secondary mb-0 notification-clock">
+        var newnotificationClock = `<p class="mb-0 text-xs text-secondary notification-clock">
                           <i class="fa fa-clock me-1 "></i>` + data.created_at + `</p>`;
         notifications.html(newNotificationHtml + existingNotifications + newnotificationClock);
         notificationsCount += 1;
